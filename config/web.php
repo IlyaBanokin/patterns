@@ -50,7 +50,8 @@ $config = [
             'enableStrictParsing' => true,
             'rules' => [
                 '/' => 'patterns/index',
-                'property' => 'patterns/fundamental'
+                'property' => 'patterns/fundamental',
+                'delegation' => 'patterns/delegation',
             ],
         ],
 

@@ -1,5 +1,6 @@
 <?php namespace app\controllers;
 
+use app\controllers\delegation\AppMessenger;
 use app\models\BlogPost;
 use yii\web\Controller;
 
@@ -9,9 +10,12 @@ use yii\web\Controller;
  */
 class PatternsController extends Controller
 {
+    /**
+     * @return int
+     */
     public function actionIndex()
     {
-        return 123;
+        return 'Hello Page';
     }
 
     /**
@@ -37,5 +41,24 @@ class PatternsController extends Controller
             'blogPost' => $item,
         ]);
 
+    }
+
+    /**
+     *
+     */
+    public function actionDelegation()
+    {
+        $item = new AppMessenger();
+
+        $item->setSender('admin@admin.ru')
+            ->setRecipient('user@user.ru')
+            ->setMessage('Send To Email')
+            ->send();
+
+        $item->toSms()
+            ->setSender('admin2@admin.ru')
+            ->setRecipient('user2@user.ru')
+            ->setMessage('Send To SMS')
+            ->send();
     }
 }
